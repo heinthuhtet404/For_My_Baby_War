@@ -25,7 +25,7 @@ document.querySelectorAll('.fade-in, .photo-hero, .photo-small, .single-photo, .
 });
 
 
-// ===== CHAT BUBBLE REVEAL (Sequential) =====
+// ===== CHAT BUBBLE REVEAL =====
 const chatObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -94,43 +94,6 @@ lightbox.addEventListener('click', (e) => {
 });
 
 
-// ===== TAKE A BREAK =====
-const breakMessages = [
-  "ရေသောက်ပြီးပြီလား? 💧",
-  "မျက်စိလေးခဏနားပေးနော် 🤍",
-  "ဒီနေ့လည်း ကြိုးစားခဲ့တယ်။",
-  "ခဏလေးပဲဖြစ်ဖြစ် နားပါဦး။",
-  "မင်းကိုယ်မင်းလည်း ဂရုစိုက်ဦးနော်။",
-  "အသက်ပြင်းပြင်းရှူပြီး ခဏနားလိုက်နော် 🌷",
-  "ဒီနေ့က မင်းအတွက်ပါ။",
-  "မင်းရဲ့အပြုံးလေးက လှတယ်။",
-  "အနားယူဖို့ မမေ့နဲ့နော်။"
-];
-
-const breakBtn = document.getElementById('breakBtn');
-const breakMessage = document.getElementById('breakMessage');
-
-if (breakBtn) {
-  let lastIndex = -1;
-  breakBtn.addEventListener('click', () => {
-    let randomIndex;
-    do {
-      randomIndex = Math.floor(Math.random() * breakMessages.length);
-    } while (randomIndex === lastIndex && breakMessages.length > 1);
-    lastIndex = randomIndex;
-
-    breakMessage.textContent = breakMessages[randomIndex];
-    breakMessage.classList.remove('show');
-    void breakMessage.offsetWidth;
-    breakMessage.classList.add('show');
-
-    if ('vibrate' in navigator) {
-      navigator.vibrate(30);
-    }
-  });
-}
-
-
 // ===== SMOOTH SCROLL =====
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
@@ -157,3 +120,61 @@ window.addEventListener('scroll', () => {
     cloudTicking = true;
   }
 }, { passive: true });
+
+// ===== FEEDBACK FORM (Formspree) =====
+const heartForm = document.getElementById('heartForm');
+const sendBtn = document.getElementById('sendBtn');
+const successMessage = document.getElementById('successMessage');
+
+if (heartForm) {
+  heartForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    // Button loading state
+    const originalText = sendBtn.innerHTML;
+    sendBtn.innerHTML = '<span>ပို့နေသည်… ⏳</span>';
+    sendBtn.disabled = true;
+
+    // Hide previous success message if any
+    successMessage.classList.remove('show');
+
+    const formData = new FormData(heartForm);
+
+    try {
+      const response = await fetch(heartForm.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        // Show success message (form ကို မဖျောက်)
+        successMessage.classList.add('show');
+
+        // Vibrate if supported
+        if ('vibrate' in navigator) {
+          navigator.vibrate([50, 30, 50]);
+        }
+
+        // Scroll to success message (form အောက်မှာ)
+        setTimeout(() => {
+          successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 200);
+
+        // Button ကို ပြန်ယူ
+        sendBtn.innerHTML = '<span>ထပ်ပို့မယ် 💌</span>';
+        sendBtn.disabled = false;
+      } else {
+        throw new Error('Send failed');
+      }
+    } catch (error) {
+      sendBtn.innerHTML = '<span>ပြန်စမ်းကြည့်ပါ 🙏</span>';
+      sendBtn.disabled = false;
+      setTimeout(() => {
+        sendBtn.innerHTML = originalText;
+      }, 3000);
+    }
+  });
+}

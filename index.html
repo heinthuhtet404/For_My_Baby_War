@@ -10,6 +10,11 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Noto+Sans+Myanmar:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
     rel="stylesheet" />
+  <!-- Vercel Analytics -->
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
 </head>
 
 <body>
@@ -21,22 +26,22 @@
   </div>
 
   <!-- ===== BACKGROUND MUSIC ===== -->
-<audio id="bgMusic" loop preload="auto">
-  <source src="music.mp3" type="audio/mpeg" />
-</audio>
+  <audio id="bgMusic" loop preload="auto">
+    <source src="music.mp3" type="audio/mpeg" />
+  </audio>
 
-<!-- ===== MUSIC PLAYER ===== -->
-<div class="music-player" id="musicPlayer">
-  <button class="music-toggle" id="musicToggle" aria-label="Music toggle">
-    <span class="music-icon" id="musicIcon">🎵</span>
-  </button>
-  <div class="music-info" id="musicInfo">
-    <div class="music-title">For War 🤍</div>
-    <div class="music-controls">
-      <input type="range" id="volumeSlider" class="volume-slider" min="0" max="1" step="0.01" value="0.5" />
+  <!-- ===== MUSIC PLAYER ===== -->
+  <div class="music-player" id="musicPlayer">
+    <button class="music-toggle" id="musicToggle" aria-label="Music toggle">
+      <span class="music-icon" id="musicIcon">🎵</span>
+    </button>
+    <div class="music-info" id="musicInfo">
+      <div class="music-title">For War 🤍</div>
+      <div class="music-controls">
+        <input type="range" id="volumeSlider" class="volume-slider" min="0" max="1" step="0.01" value="0.5" />
+      </div>
     </div>
   </div>
-</div>
 
   <!-- ===== SECTION 1 — OPENING ===== -->
   <section class="section opening">
@@ -64,9 +69,9 @@
       </div>
 
       <p class="music-hint fade-in delay2">
-    စာလေးတွေ ဖတ်ရင်း ပျင်းမသွားအောင် ညာဘက်ထောင့်က ခလုတ်လေးကို နှိပ်ပြီး သီချင်းသံလေးနဲ့အတူ ဖတ်လို့ရတယ်နော်။ 🤍
-    ဝါကြိုက်တဲ့ သီချင်းလေးလည်း တိုးတိုးငြိမ့်ငြိမ့်လေး ပွင့်လာလိမ့်မယ်။ 🌷
-  </p>
+        စာလေးတွေ ဖတ်ရင်း ပျင်းမသွားအောင် ညာဘက်ထောင့်က ခလုတ်လေးကို နှိပ်ပြီး သီချင်းသံလေးနဲ့အတူ ဖတ်လို့ရတယ်နော်။ 🤍
+        ဝါကြိုက်တဲ့ သီချင်းလေးလည်း တိုးတိုးငြိမ့်ငြိမ့်လေး ပွင့်လာလိမ့်မယ်။ 🌷
+      </p>
 
       <a href="#memories" class="btn fade-in delay3">
         <span>အမှတ်တရလေးတွေ ကြည့်မယ် ♡</span>
@@ -75,49 +80,50 @@
   </section>
 
   <!-- ===== SECTION 1.5 — COUNTDOWN ===== -->
-<section class="section countdown-section">
-  <div class="content">
-    <div class="section-header fade-in">
-      <div class="section-emoji">⏳</div>
-      <h2>ပြန်တွေ့ရမယ့်ရက်</h2>
-      <p class="section-sub">
-        ကျောင်းပြန်တက်ရင် ကိုယ်တို့ ပြန်တွေ့ကြမယ်နော် 🤍
-      </p>
-      <p class="section-sub">
-        ကျောင်းပြန်မတက်ခင်မှာလည်း အကြောင်းလေးတစ်ခုခုနဲ့ ပြန်တွေ့ဖြစ်မလားတော့ မသိဘူးနော်။ သေချာတာတစ်ခုကတော့ ကိုယ် ဝါနဲ့ တွေ့ချင်တယ်။ 🤍
-      </p>
-    </div>
-
-    <div class="countdown-box fade-in">
-      <div class="countdown-grid">
-        <div class="countdown-item">
-          <div class="countdown-value" id="days">--</div>
-          <div class="countdown-label">နေ့</div>
-        </div>
-        <div class="countdown-item">
-          <div class="countdown-value" id="hours">--</div>
-          <div class="countdown-label">နာရီ</div>
-        </div>
-        <div class="countdown-item">
-          <div class="countdown-value" id="minutes">--</div>
-          <div class="countdown-label">မိနစ်</div>
-        </div>
-        <div class="countdown-item">
-          <div class="countdown-value" id="seconds">--</div>
-          <div class="countdown-label">စက္ကန့်</div>
-        </div>
+  <section class="section countdown-section">
+    <div class="content">
+      <div class="section-header fade-in">
+        <div class="section-emoji">⏳</div>
+        <h2>ပြန်တွေ့ရမယ့်ရက်</h2>
+        <p class="section-sub">
+          ကျောင်းပြန်တက်ရင် ကိုယ်တို့ ပြန်တွေ့ကြမယ်နော် 🤍
+        </p>
+        <p class="section-sub">
+          ကျောင်းပြန်မတက်ခင်မှာလည်း အကြောင်းလေးတစ်ခုခုနဲ့ ပြန်တွေ့ဖြစ်မလားတော့ မသိဘူးနော်။ သေချာတာတစ်ခုကတော့ ကိုယ် ဝါနဲ့
+          တွေ့ချင်တယ်။ 🤍
+        </p>
       </div>
 
-      <div class="countdown-date">
-        ၂၅ နိုဝင်ဘာ ၂၀၂၆
-      </div>
+      <div class="countdown-box fade-in">
+        <div class="countdown-grid">
+          <div class="countdown-item">
+            <div class="countdown-value" id="days">--</div>
+            <div class="countdown-label">နေ့</div>
+          </div>
+          <div class="countdown-item">
+            <div class="countdown-value" id="hours">--</div>
+            <div class="countdown-label">နာရီ</div>
+          </div>
+          <div class="countdown-item">
+            <div class="countdown-value" id="minutes">--</div>
+            <div class="countdown-label">မိနစ်</div>
+          </div>
+          <div class="countdown-item">
+            <div class="countdown-value" id="seconds">--</div>
+            <div class="countdown-label">စက္ကန့်</div>
+          </div>
+        </div>
 
-      <p class="countdown-message" id="countdownMessage">
-        တစ်နေ့ချင်း နီးလာနေပြီနော်… 🤍
-      </p>
+        <div class="countdown-date">
+          ၂၅ နိုဝင်ဘာ ၂၀၂၆
+        </div>
+
+        <p class="countdown-message" id="countdownMessage">
+          တစ်နေ့ချင်း နီးလာနေပြီနော်… 🤍
+        </p>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
   <!-- ===== SECTION 2 — MEMORIES ===== -->
   <section class="section memories" id="memories">
@@ -611,177 +617,205 @@
   </section>
 
   <!-- ===== SECTION 13 — HEART TO HEART ===== -->
-<section class="section heart">
-  <div class="content">
-    <div class="section-header fade-in">
-      <div class="section-emoji">💌</div>
-      <h2>နှစ်ယောက်ကြား<br>ရင်ဖွင့်စရာလေး</h2>
-      <p class="section-sub">
-        ဝါရေ… ဒီနေရာလေးမှာ ကိုယ်တို့နှစ်ယောက် ပိုနားလည်လာနိုင်ဖို့ ကိုယ်ကြားချင်တဲ့ စကားလေးတွေ ရှိတယ်။
-        ကိုယ်မသိလိုက်တဲ့ ဝါ့ခံစားချက်လေးတွေ၊ ကိုယ်ပိုဂရုစိုက်ပေးနိုင်မယ့် အရာလေးတွေကိုလည်း သိခွင့်ရချင်တယ်။<br><br>
-        ဝါအဆင်ပြေတဲ့အချိန်မှ ဖြည်းဖြည်းချင်း ပြောပြပေးနော်။ အားလုံးကို တစ်ခါတည်း ပြောပြဖို့လည်း မလိုပါဘူး။
-        ဝါပြောချင်တဲ့ စကားလေးတွေကို ကိုယ်က စိတ်ရှည်ရှည်နဲ့ နားထောင်ပေးချင်တာပါ။ 🤍
-      </p>
+  <section class="section heart">
+    <div class="content">
+      <div class="section-header fade-in">
+        <div class="section-emoji">💌</div>
+        <h2>နှစ်ယောက်ကြား<br>ရင်ဖွင့်စရာလေး</h2>
+        <p class="section-sub">
+          ဝါရေ… ဒီနေရာလေးမှာ ကိုယ်တို့နှစ်ယောက် ပိုနားလည်လာနိုင်ဖို့ ကိုယ်ကြားချင်တဲ့ စကားလေးတွေ ရှိတယ်။
+          ကိုယ်မသိလိုက်တဲ့ ဝါ့ခံစားချက်လေးတွေ၊ ကိုယ်ပိုဂရုစိုက်ပေးနိုင်မယ့် အရာလေးတွေကိုလည်း သိခွင့်ရချင်တယ်။<br><br>
+          ဝါအဆင်ပြေတဲ့အချိန်မှ ဖြည်းဖြည်းချင်း ပြောပြပေးနော်။ အားလုံးကို တစ်ခါတည်း ပြောပြဖို့လည်း မလိုပါဘူး။
+          ဝါပြောချင်တဲ့ စကားလေးတွေကို ကိုယ်က စိတ်ရှည်ရှည်နဲ့ နားထောင်ပေးချင်တာပါ။ 🤍
+        </p>
+      </div>
+
+      <form class="heart-form" id="heartForm" action="https://formspree.io/f/xyekndlk" method="POST">
+
+        <!-- ===== Q1 — RADIO ===== -->
+        <div class="question fade-in">
+          <label>၁။ အခုတလော ဝါ့ရင်ထဲမှာ ဘယ်လိုလဲ။ ☁️</label>
+          <div class="radio-group">
+            <label><input type="radio" name="q1" value="အဆင်ပြေနေပါတယ်" /> <span>အဆင်ပြေနေပါတယ် 🤍</span></label>
+            <label><input type="radio" name="q1" value="အချိန်လိုသေးတယ်" /> <span>နည်းနည်းတော့ အချိန်လိုသေးတယ်
+                🌷</span></label>
+            <label><input type="radio" name="q1" value="ပြောချင်တာရှိသေးတယ်" /> <span>ရင်ထဲမှာ ပြောချင်တာလေးတွေ
+                ရှိသေးတယ် 💌</span></label>
+            <label><input type="radio" name="q1" value="အေးဆေးနေချင်တယ်" /> <span>အေးအေးဆေးဆေးပဲ နေချင်တယ်
+                ☁️</span></label>
+          </div>
+        </div>
+
+        <!-- ===== Q2 — RADIO ===== -->
+        <div class="question fade-in">
+          <label>၂။ ကိုယ့်ကို ဘယ်လောက်ချစ်လဲ။ 💕</label>
+          <p class="q-desc">ဖြေရမှာ မဟုတ်ဘူးနော်… ရွေးရုံလေးပါ။ 😊</p>
+          <div class="radio-group">
+            <label><input type="radio" name="q2" value="အရမ်းချစ်တယ်" /> <span>အရမ်းချစ်တယ် 💕</span></label>
+            <label><input type="radio" name="q2" value="ချစ်တယ်" /> <span>ချစ်တယ် 🤍</span></label>
+            <label><input type="radio" name="q2" value="အရမ်းအရမ်းချစ်တယ်" /> <span>အရမ်းအရမ်းချစ်တယ် 🥰</span></label>
+            <label><input type="radio" name="q2" value="တစ်သက်လုံးချစ်မယ်" /> <span>တစ်သက်လုံး ချစ်သွားမယ်
+                💗</span></label>
+          </div>
+        </div>
+
+        <!-- ===== Q3 — CHECKBOX (multiple) ===== -->
+        <div class="question fade-in">
+          <label>၃။ ကိုယ်လုပ်ပေးတာတွေထဲမှာ ဝါသဘောကျတာလေးတွေ ရွေးပေးပါ။ 🌷</label>
+          <p class="q-desc">အများကြီး ရွေးလို့ရတယ်နော်။</p>
+          <div class="radio-group">
+            <label><input type="checkbox" name="q3" value="မနက်တိုင်းစာပို့တာ" /> <span>မနက်တိုင်း
+                စာပို့တာ</span></label>
+            <label><input type="checkbox" name="q3" value="အလုပ်များနေရင်လည်းအချိန်ပေးတာ" /> <span>အလုပ်များနေရင်လည်း
+                အချိန်ပေးတာ</span></label>
+            <label><input type="checkbox" name="q3" value="အသေးစိတ်မှတ်ထားတာ" /> <span>အသေးစိတ်လေးတွေ
+                မှတ်ထားတာ</span></label>
+            <label><input type="checkbox" name="q3" value="ချော့ပေးတာ" /> <span>ချော့ပေးတာ</span></label>
+            <label><input type="checkbox" name="q3" value="အားပေးစကားပြောတာ" /> <span>အားပေးစကားလေးတွေ
+                ပြောတာ</span></label>
+            <label><input type="checkbox" name="q3" value="နားထောင်ပေးတာ" /> <span>ကောင်းကောင်း
+                နားထောင်ပေးတာ</span></label>
+            <label><input type="checkbox" name="q3" value="အနားမှာရှိပေးတာ" /> <span>အနားမှာ ရှိပေးတာ</span></label>
+          </div>
+        </div>
+
+        <!-- ===== Q4 — RADIO ===== -->
+        <div class="question fade-in">
+          <label>၄။ ကိုယ်က ဝါ့ကို ဘယ်လိုဂရုစိုက်ပေးတာကို ပိုကြိုက်လဲ။ 🤍</label>
+          <div class="radio-group">
+            <label><input type="radio" name="q4" value="စကားလေးတွေနဲ့ဂရုစိုက်တာ" /> <span>စကားလေးတွေနဲ့
+                ဂရုစိုက်တာ</span></label>
+            <label><input type="radio" name="q4" value="အချိန်ပေးတာ" /> <span>အချိန်ပေးတာ</span></label>
+            <label><input type="radio" name="q4" value="လက်ဆောင်လေးတွေပေးတာ" /> <span>လက်ဆောင်လေးတွေ
+                ပေးတာ</span></label>
+            <label><input type="radio" name="q4" value="အနားမှာအမြဲရှိပေးတာ" /> <span>အနားမှာ
+                အမြဲရှိပေးတာ</span></label>
+            <label><input type="radio" name="q4" value="အားလုံးကြိုက်တယ်" /> <span>အားလုံး ကြိုက်တယ် 🥰</span></label>
+          </div>
+        </div>
+
+        <!-- ===== Q5 — CHECKBOX ===== -->
+        <div class="question fade-in">
+          <label>၅။ ကိုယ့်ဆီက ဘာလေးတွေ လိုချင်သေးလဲ။ 🫶</label>
+          <p class="q-desc">အများကြီး ရွေးလို့ရတယ်နော်။</p>
+          <div class="radio-group">
+            <label><input type="checkbox" name="q5" value="အချိန်ပိုပေးတာ" /> <span>အချိန် ပိုပေးတာ</span></label>
+            <label><input type="checkbox" name="q5" value="စကားပိုပြောတာ" /> <span>စကား ပိုပြောတာ</span></label>
+            <label><input type="checkbox" name="q5" value="အလုပ်များနေရင်လည်းသတိရပါတယ်ဆိုတာပြောတာ" />
+              <span>အလုပ်များနေရင်လည်း "သတိရပါတယ်" ဆိုတာ ပြောတာ</span></label>
+            <label><input type="checkbox" name="q5" value="အပြင်လိုက်ပို့တာ" /> <span>အပြင် လိုက်ပို့တာ</span></label>
+            <label><input type="checkbox" name="q5" value="အားပေးစကားပိုပြောတာ" /> <span>အားပေးစကား
+                ပိုပြောတာ</span></label>
+            <label><input type="checkbox" name="q5" value="ဘာမှမလိုဘူးအတိုင်းပဲကောင်းတယ်" /> <span>ဘာမှ မလိုဘူး —
+                အတိုင်းပဲ ကောင်းတယ် 💗</span></label>
+          </div>
+        </div>
+
+        <!-- ===== Q6 — RADIO ===== -->
+        <div class="question fade-in">
+          <label>၆။ ကိုယ်တို့ စိတ်မသင့်တဲ့အခါ ဘယ်လိုလုပ်ရင် ပိုကောင်းမလဲ။ 🌤️</label>
+          <div class="radio-group">
+            <label><input type="radio" name="q6" value="ချက်ချင်းပြေလည်အောင်လုပ်တာ" /> <span>ချက်ချင်း ပြေလည်အောင်
+                လုပ်တာ</span></label>
+            <label><input type="radio" name="q6" value="ခဏနေပြီးမှပြောတာ" /> <span>ခဏနေပြီးမှ ပြောတာ</span></label>
+            <label><input type="radio" name="q6" value="ချော့ပေးတာ" /> <span>ချော့ပေးတာ</span></label>
+            <label><input type="radio" name="q6" value="အေးအေးဆေးဆေးနေပြီးမှပြောတာ" /> <span>အေးအေးဆေးဆေး နေပြီးမှ
+                ပြောတာ</span></label>
+            <label><input type="radio" name="q6" value="ဘယ်လိုပဲဖြစ်ဖြစ်ပြေလည်ရင်ရပြီ" /> <span>ဘယ်လိုပဲဖြစ်ဖြစ်
+                ပြေလည်ရင် ရပြီ</span></label>
+          </div>
+        </div>
+
+        <!-- ===== Q7 — CHECKBOX ===== -->
+        <div class="question fade-in">
+          <label>၇။ ကိုယ်တို့ အတူတူ လုပ်ချင်တာလေးတွေ ရွေးပါ။ 🌸</label>
+          <p class="q-desc">အများကြီး ရွေးလို့ရတယ်နော်။</p>
+          <div class="radio-group">
+            <label><input type="checkbox" name="q7" value="ခရီးလေးတွေထွက်တာ" /> <span>ခရီးလေးတွေ ထွက်တာ</span></label>
+            <label><input type="checkbox" name="q7" value="အတူတူစားတာ" /> <span>အတူတူ စားတာ</span></label>
+            <label><input type="checkbox" name="q7" value="ရုပ်ရှင်အတူကြည့်တာ" /> <span>ရုပ်ရှင်
+                အတူကြည့်တာ</span></label>
+            <label><input type="checkbox" name="q7" value="အတူတူစာကျက်တာ" /> <span>အတူတူ စာကျက်တာ</span></label>
+            <label><input type="checkbox" name="q7" value="ညနေတိုင်းလမ်းလျှောက်တာ" /> <span>ညနေတိုင်း
+                လမ်းလျှောက်တာ</span></label>
+            <label><input type="checkbox" name="q7" value="အဝေးရောက်ရင်လည်းအမြဲစကားပြောတာ" /> <span>အဝေးရောက်ရင်လည်း
+                အမြဲ စကားပြောတာ</span></label>
+          </div>
+        </div>
+
+        <!-- ===== Q8 — RADIO ===== -->
+        <div class="question fade-in">
+          <label>၈။ ကိုယ်တို့ရဲ့ အနာဂတ်ကို ဘယ်လိုမြင်လဲ။ 💫</label>
+          <div class="radio-group">
+            <label><input type="radio" name="q8" value="အတူတူပဲဖြစ်ချင်တယ်" /> <span>အတူတူပဲ ဖြစ်ချင်တယ်
+                💍</span></label>
+            <label><input type="radio" name="q8" value="ဒီအတိုင်းဆက်သွားချင်တယ်" /> <span>ဒီအတိုင်း ဆက်သွားချင်တယ်
+                🤍</span></label>
+            <label><input type="radio" name="q8" value="ပိုကောင်းလာအောင်လုပ်ချင်တယ်" /> <span>ပိုကောင်းလာအောင်
+                လုပ်ချင်တယ် ✨</span></label>
+            <label><input type="radio" name="q8" value="အေးအေးဆေးဆေးပဲရှိချင်တယ်" /> <span>အေးအေးဆေးဆေးပဲ ရှိချင်တယ်
+                🌙</span></label>
+          </div>
+        </div>
+
+        <!-- ===== Q9 — TEXTAREA (Optional) ===== -->
+        <div class="question fade-in">
+          <label>၉။ ကိုယ့်ကို ပြောချင်တဲ့စကားလေး ရှိရင်… 🌷</label>
+          <p class="q-desc">မရေးချင်ရင် မရေးလည်း ရတယ်နော်။ စိတ်ထဲရှိရင်ပဲ ရေးပေးပါ။</p>
+          <textarea name="q9" rows="3" placeholder="ဒီနေရာလေးမှာ ရေးလို့ရတယ်နော်…"></textarea>
+        </div>
+
+        <!-- ===== Q10 — TEXTAREA (Optional) ===== -->
+        <div class="question fade-in">
+          <label>၁၀။ ကိုယ်တို့ သိထားသင့်တဲ့အရာလေး ရှိရင်… 💭</label>
+          <p class="q-desc">အတင်းဖြေစရာ မလိုဘူးနော်။ ပြောချင်ရင်ပဲ ပြောပေးပါ။</p>
+          <textarea name="q10" rows="3" placeholder="မရေးချင်ရင် ကျော်လို့ရတယ်နော်…"></textarea>
+        </div>
+
+        <!-- ===== Q11 — RADIO ===== -->
+        <div class="question fade-in">
+          <label>၁၁။ ကိုယ်တို့ အတူတူရှိခဲ့တာ ဘယ်လိုခံစားရလဲ။ 🌸</label>
+          <div class="radio-group">
+            <label><input type="radio" name="q11" value="အရမ်းပျော်တယ်" /> <span>အရမ်းပျော်တယ် 🥰</span></label>
+            <label><input type="radio" name="q11" value="ပျော်တယ်" /> <span>ပျော်တယ် 🤍</span></label>
+            <label><input type="radio" name="q11" value="ပိုပျော်လာအောင်လုပ်ချင်တယ်" /> <span>ပိုပျော်လာအောင်
+                လုပ်ချင်တယ် ✨</span></label>
+            <label><input type="radio" name="q11" value="အတိုင်းပဲကောင်းတယ်" /> <span>အတိုင်းပဲ ကောင်းတယ်
+                🌷</span></label>
+          </div>
+        </div>
+
+        <!-- ===== Q12 — RADIO ===== -->
+        <div class="question fade-in">
+          <label>၁၂။ နောက်ဆုံးလေး… ကိုယ့်ကို ဘာပြောချင်လဲ။ 💌</label>
+          <div class="radio-group">
+            <label><input type="radio" name="q12" value="ချစ်တယ်" /> <span>ချစ်တယ် 💕</span></label>
+            <label><input type="radio" name="q12" value="သတိရတယ်" /> <span>သတိရတယ် 🤍</span></label>
+            <label><input type="radio" name="q12" value="ကျေးဇူးတင်တယ်" /> <span>ကျေးဇူးတင်တယ် 🌷</span></label>
+            <label><input type="radio" name="q12" value="အတူတူရှိပေးတယ်" /> <span>အမြဲ အတူတူ ရှိပေးမယ် 💗</span></label>
+            <label><input type="radio" name="q12" value="အားလုံးပြောချင်တယ်" /> <span>အားလုံး ပြောချင်တယ်
+                🥰</span></label>
+          </div>
+        </div>
+
+        <p class="note fade-in">
+          ဝါရေ… မေးခွန်းတိုင်းကို ဖြေဖို့မလိုပါဘူးနော်။ ဝါဖြေချင်တာလေးတွေကိုပဲ အေးအေးဆေးဆေး ရွေးချန်ထားခဲ့ပေးပါ။
+          ဝါ့ခံစားချက်တွေက ကိုယ့်အတွက် အရေးကြီးပါတယ်။ 🤍
+        </p>
+
+        <!-- Send Button -->
+        <button type="submit" class="btn send-btn" id="sendBtn">
+          <span>ဖြေပြီးသားလေးတွေ ပို့မယ် 💌</span>
+        </button>
+
+        <!-- Success Message -->
+        <div class="success-message" id="successMessage">
+          <div class="success-icon">💕</div>
+          <p>ပို့ပြီးပါပြီနော်… 🤍<br>ကိုယ် ဖတ်ကြည့်ပါ့မယ်။</p>
+        </div>
+      </form>
     </div>
-
-    <form class="heart-form" id="heartForm" action="https://formspree.io/f/xyekndlk" method="POST">
-
-      <!-- ===== Q1 — RADIO ===== -->
-      <div class="question fade-in">
-        <label>၁။ အခုတလော ဝါ့ရင်ထဲမှာ ဘယ်လိုလဲ။ ☁️</label>
-        <div class="radio-group">
-          <label><input type="radio" name="q1" value="အဆင်ပြေနေပါတယ်" /> <span>အဆင်ပြေနေပါတယ် 🤍</span></label>
-          <label><input type="radio" name="q1" value="အချိန်လိုသေးတယ်" /> <span>နည်းနည်းတော့ အချိန်လိုသေးတယ် 🌷</span></label>
-          <label><input type="radio" name="q1" value="ပြောချင်တာရှိသေးတယ်" /> <span>ရင်ထဲမှာ ပြောချင်တာလေးတွေ ရှိသေးတယ် 💌</span></label>
-          <label><input type="radio" name="q1" value="အေးဆေးနေချင်တယ်" /> <span>အေးအေးဆေးဆေးပဲ နေချင်တယ် ☁️</span></label>
-        </div>
-      </div>
-
-      <!-- ===== Q2 — RADIO ===== -->
-      <div class="question fade-in">
-        <label>၂။ ကိုယ့်ကို ဘယ်လောက်ချစ်လဲ။ 💕</label>
-        <p class="q-desc">ဖြေရမှာ မဟုတ်ဘူးနော်… ရွေးရုံလေးပါ။ 😊</p>
-        <div class="radio-group">
-          <label><input type="radio" name="q2" value="အရမ်းချစ်တယ်" /> <span>အရမ်းချစ်တယ် 💕</span></label>
-          <label><input type="radio" name="q2" value="ချစ်တယ်" /> <span>ချစ်တယ် 🤍</span></label>
-          <label><input type="radio" name="q2" value="အရမ်းအရမ်းချစ်တယ်" /> <span>အရမ်းအရမ်းချစ်တယ် 🥰</span></label>
-          <label><input type="radio" name="q2" value="တစ်သက်လုံးချစ်မယ်" /> <span>တစ်သက်လုံး ချစ်သွားမယ် 💗</span></label>
-        </div>
-      </div>
-
-      <!-- ===== Q3 — CHECKBOX (multiple) ===== -->
-      <div class="question fade-in">
-        <label>၃။ ကိုယ်လုပ်ပေးတာတွေထဲမှာ ဝါသဘောကျတာလေးတွေ ရွေးပေးပါ။ 🌷</label>
-        <p class="q-desc">အများကြီး ရွေးလို့ရတယ်နော်။</p>
-        <div class="radio-group">
-          <label><input type="checkbox" name="q3" value="မနက်တိုင်းစာပို့တာ" /> <span>မနက်တိုင်း စာပို့တာ</span></label>
-          <label><input type="checkbox" name="q3" value="အလုပ်များနေရင်လည်းအချိန်ပေးတာ" /> <span>အလုပ်များနေရင်လည်း အချိန်ပေးတာ</span></label>
-          <label><input type="checkbox" name="q3" value="အသေးစိတ်မှတ်ထားတာ" /> <span>အသေးစိတ်လေးတွေ မှတ်ထားတာ</span></label>
-          <label><input type="checkbox" name="q3" value="ချော့ပေးတာ" /> <span>ချော့ပေးတာ</span></label>
-          <label><input type="checkbox" name="q3" value="အားပေးစကားပြောတာ" /> <span>အားပေးစကားလေးတွေ ပြောတာ</span></label>
-          <label><input type="checkbox" name="q3" value="နားထောင်ပေးတာ" /> <span>ကောင်းကောင်း နားထောင်ပေးတာ</span></label>
-          <label><input type="checkbox" name="q3" value="အနားမှာရှိပေးတာ" /> <span>အနားမှာ ရှိပေးတာ</span></label>
-        </div>
-      </div>
-
-      <!-- ===== Q4 — RADIO ===== -->
-      <div class="question fade-in">
-        <label>၄။ ကိုယ်က ဝါ့ကို ဘယ်လိုဂရုစိုက်ပေးတာကို ပိုကြိုက်လဲ။ 🤍</label>
-        <div class="radio-group">
-          <label><input type="radio" name="q4" value="စကားလေးတွေနဲ့ဂရုစိုက်တာ" /> <span>စကားလေးတွေနဲ့ ဂရုစိုက်တာ</span></label>
-          <label><input type="radio" name="q4" value="အချိန်ပေးတာ" /> <span>အချိန်ပေးတာ</span></label>
-          <label><input type="radio" name="q4" value="လက်ဆောင်လေးတွေပေးတာ" /> <span>လက်ဆောင်လေးတွေ ပေးတာ</span></label>
-          <label><input type="radio" name="q4" value="အနားမှာအမြဲရှိပေးတာ" /> <span>အနားမှာ အမြဲရှိပေးတာ</span></label>
-          <label><input type="radio" name="q4" value="အားလုံးကြိုက်တယ်" /> <span>အားလုံး ကြိုက်တယ် 🥰</span></label>
-        </div>
-      </div>
-
-      <!-- ===== Q5 — CHECKBOX ===== -->
-      <div class="question fade-in">
-        <label>၅။ ကိုယ့်ဆီက ဘာလေးတွေ လိုချင်သေးလဲ။ 🫶</label>
-        <p class="q-desc">အများကြီး ရွေးလို့ရတယ်နော်။</p>
-        <div class="radio-group">
-          <label><input type="checkbox" name="q5" value="အချိန်ပိုပေးတာ" /> <span>အချိန် ပိုပေးတာ</span></label>
-          <label><input type="checkbox" name="q5" value="စကားပိုပြောတာ" /> <span>စကား ပိုပြောတာ</span></label>
-          <label><input type="checkbox" name="q5" value="အလုပ်များနေရင်လည်းသတိရပါတယ်ဆိုတာပြောတာ" /> <span>အလုပ်များနေရင်လည်း "သတိရပါတယ်" ဆိုတာ ပြောတာ</span></label>
-          <label><input type="checkbox" name="q5" value="အပြင်လိုက်ပို့တာ" /> <span>အပြင် လိုက်ပို့တာ</span></label>
-          <label><input type="checkbox" name="q5" value="အားပေးစကားပိုပြောတာ" /> <span>အားပေးစကား ပိုပြောတာ</span></label>
-          <label><input type="checkbox" name="q5" value="ဘာမှမလိုဘူးအတိုင်းပဲကောင်းတယ်" /> <span>ဘာမှ မလိုဘူး — အတိုင်းပဲ ကောင်းတယ် 💗</span></label>
-        </div>
-      </div>
-
-      <!-- ===== Q6 — RADIO ===== -->
-      <div class="question fade-in">
-        <label>၆။ ကိုယ်တို့ စိတ်မသင့်တဲ့အခါ ဘယ်လိုလုပ်ရင် ပိုကောင်းမလဲ။ 🌤️</label>
-        <div class="radio-group">
-          <label><input type="radio" name="q6" value="ချက်ချင်းပြေလည်အောင်လုပ်တာ" /> <span>ချက်ချင်း ပြေလည်အောင် လုပ်တာ</span></label>
-          <label><input type="radio" name="q6" value="ခဏနေပြီးမှပြောတာ" /> <span>ခဏနေပြီးမှ ပြောတာ</span></label>
-          <label><input type="radio" name="q6" value="ချော့ပေးတာ" /> <span>ချော့ပေးတာ</span></label>
-          <label><input type="radio" name="q6" value="အေးအေးဆေးဆေးနေပြီးမှပြောတာ" /> <span>အေးအေးဆေးဆေး နေပြီးမှ ပြောတာ</span></label>
-          <label><input type="radio" name="q6" value="ဘယ်လိုပဲဖြစ်ဖြစ်ပြေလည်ရင်ရပြီ" /> <span>ဘယ်လိုပဲဖြစ်ဖြစ် ပြေလည်ရင် ရပြီ</span></label>
-        </div>
-      </div>
-
-      <!-- ===== Q7 — CHECKBOX ===== -->
-      <div class="question fade-in">
-        <label>၇။ ကိုယ်တို့ အတူတူ လုပ်ချင်တာလေးတွေ ရွေးပါ။ 🌸</label>
-        <p class="q-desc">အများကြီး ရွေးလို့ရတယ်နော်။</p>
-        <div class="radio-group">
-          <label><input type="checkbox" name="q7" value="ခရီးလေးတွေထွက်တာ" /> <span>ခရီးလေးတွေ ထွက်တာ</span></label>
-          <label><input type="checkbox" name="q7" value="အတူတူစားတာ" /> <span>အတူတူ စားတာ</span></label>
-          <label><input type="checkbox" name="q7" value="ရုပ်ရှင်အတူကြည့်တာ" /> <span>ရုပ်ရှင် အတူကြည့်တာ</span></label>
-          <label><input type="checkbox" name="q7" value="အတူတူစာကျက်တာ" /> <span>အတူတူ စာကျက်တာ</span></label>
-          <label><input type="checkbox" name="q7" value="ညနေတိုင်းလမ်းလျှောက်တာ" /> <span>ညနေတိုင်း လမ်းလျှောက်တာ</span></label>
-          <label><input type="checkbox" name="q7" value="အဝေးရောက်ရင်လည်းအမြဲစကားပြောတာ" /> <span>အဝေးရောက်ရင်လည်း အမြဲ စကားပြောတာ</span></label>
-        </div>
-      </div>
-
-      <!-- ===== Q8 — RADIO ===== -->
-      <div class="question fade-in">
-        <label>၈။ ကိုယ်တို့ရဲ့ အနာဂတ်ကို ဘယ်လိုမြင်လဲ။ 💫</label>
-        <div class="radio-group">
-          <label><input type="radio" name="q8" value="အတူတူပဲဖြစ်ချင်တယ်" /> <span>အတူတူပဲ ဖြစ်ချင်တယ် 💍</span></label>
-          <label><input type="radio" name="q8" value="ဒီအတိုင်းဆက်သွားချင်တယ်" /> <span>ဒီအတိုင်း ဆက်သွားချင်တယ် 🤍</span></label>
-          <label><input type="radio" name="q8" value="ပိုကောင်းလာအောင်လုပ်ချင်တယ်" /> <span>ပိုကောင်းလာအောင် လုပ်ချင်တယ် ✨</span></label>
-          <label><input type="radio" name="q8" value="အေးအေးဆေးဆေးပဲရှိချင်တယ်" /> <span>အေးအေးဆေးဆေးပဲ ရှိချင်တယ် 🌙</span></label>
-        </div>
-      </div>
-
-      <!-- ===== Q9 — TEXTAREA (Optional) ===== -->
-      <div class="question fade-in">
-        <label>၉။ ကိုယ့်ကို ပြောချင်တဲ့စကားလေး ရှိရင်… 🌷</label>
-        <p class="q-desc">မရေးချင်ရင် မရေးလည်း ရတယ်နော်။ စိတ်ထဲရှိရင်ပဲ ရေးပေးပါ။</p>
-        <textarea name="q9" rows="3" placeholder="ဒီနေရာလေးမှာ ရေးလို့ရတယ်နော်…"></textarea>
-      </div>
-
-      <!-- ===== Q10 — TEXTAREA (Optional) ===== -->
-      <div class="question fade-in">
-        <label>၁၀။ ကိုယ်တို့ သိထားသင့်တဲ့အရာလေး ရှိရင်… 💭</label>
-        <p class="q-desc">အတင်းဖြေစရာ မလိုဘူးနော်။ ပြောချင်ရင်ပဲ ပြောပေးပါ။</p>
-        <textarea name="q10" rows="3" placeholder="မရေးချင်ရင် ကျော်လို့ရတယ်နော်…"></textarea>
-      </div>
-
-      <!-- ===== Q11 — RADIO ===== -->
-      <div class="question fade-in">
-        <label>၁၁။ ကိုယ်တို့ အတူတူရှိခဲ့တာ ဘယ်လိုခံစားရလဲ။ 🌸</label>
-        <div class="radio-group">
-          <label><input type="radio" name="q11" value="အရမ်းပျော်တယ်" /> <span>အရမ်းပျော်တယ် 🥰</span></label>
-          <label><input type="radio" name="q11" value="ပျော်တယ်" /> <span>ပျော်တယ် 🤍</span></label>
-          <label><input type="radio" name="q11" value="ပိုပျော်လာအောင်လုပ်ချင်တယ်" /> <span>ပိုပျော်လာအောင် လုပ်ချင်တယ် ✨</span></label>
-          <label><input type="radio" name="q11" value="အတိုင်းပဲကောင်းတယ်" /> <span>အတိုင်းပဲ ကောင်းတယ် 🌷</span></label>
-        </div>
-      </div>
-
-      <!-- ===== Q12 — RADIO ===== -->
-      <div class="question fade-in">
-        <label>၁၂။ နောက်ဆုံးလေး… ကိုယ့်ကို ဘာပြောချင်လဲ။ 💌</label>
-        <div class="radio-group">
-          <label><input type="radio" name="q12" value="ချစ်တယ်" /> <span>ချစ်တယ် 💕</span></label>
-          <label><input type="radio" name="q12" value="သတိရတယ်" /> <span>သတိရတယ် 🤍</span></label>
-          <label><input type="radio" name="q12" value="ကျေးဇူးတင်တယ်" /> <span>ကျေးဇူးတင်တယ် 🌷</span></label>
-          <label><input type="radio" name="q12" value="အတူတူရှိပေးတယ်" /> <span>အမြဲ အတူတူ ရှိပေးမယ် 💗</span></label>
-          <label><input type="radio" name="q12" value="အားလုံးပြောချင်တယ်" /> <span>အားလုံး ပြောချင်တယ် 🥰</span></label>
-        </div>
-      </div>
-
-      <p class="note fade-in">
-        ဝါရေ… မေးခွန်းတိုင်းကို ဖြေဖို့မလိုပါဘူးနော်။ ဝါဖြေချင်တာလေးတွေကိုပဲ အေးအေးဆေးဆေး ရွေးချန်ထားခဲ့ပေးပါ။
-        ဝါ့ခံစားချက်တွေက ကိုယ့်အတွက် အရေးကြီးပါတယ်။ 🤍
-      </p>
-
-      <!-- Send Button -->
-      <button type="submit" class="btn send-btn" id="sendBtn">
-        <span>ဖြေပြီးသားလေးတွေ ပို့မယ် 💌</span>
-      </button>
-
-      <!-- Success Message -->
-      <div class="success-message" id="successMessage">
-        <div class="success-icon">💕</div>
-        <p>ပို့ပြီးပါပြီနော်… 🤍<br>ကိုယ် ဖတ်ကြည့်ပါ့မယ်။</p>
-      </div>
-    </form>
-  </div>
-</section>
+  </section>
 
   <!-- ===== SECTION 14 — PHOTO GRID (Heart အောက်) ===== -->
   <section class="section photo-grid-section">

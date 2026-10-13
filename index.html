@@ -20,6 +20,24 @@
     <div class="loader-text">FOR WAR</div>
   </div>
 
+  <!-- ===== BACKGROUND MUSIC ===== -->
+<audio id="bgMusic" loop preload="auto">
+  <source src="music.mp3" type="audio/mpeg" />
+</audio>
+
+<!-- ===== MUSIC PLAYER ===== -->
+<div class="music-player" id="musicPlayer">
+  <button class="music-toggle" id="musicToggle" aria-label="Music toggle">
+    <span class="music-icon" id="musicIcon">🎵</span>
+  </button>
+  <div class="music-info" id="musicInfo">
+    <div class="music-title">For Wa 🤍</div>
+    <div class="music-controls">
+      <input type="range" id="volumeSlider" class="volume-slider" min="0" max="1" step="0.01" value="0.5" />
+    </div>
+  </div>
+</div>
+
   <!-- ===== SECTION 1 — OPENING ===== -->
   <section class="section opening">
     <div class="sky-bg">
@@ -45,11 +63,61 @@
         </p>
       </div>
 
+      <p class="music-hint fade-in delay2">
+    စာလေးတွေ ဖတ်ရင်း ပျင်းမသွားအောင် ညာဘက်ထောင့်က ခလုတ်လေးကို နှိပ်ပြီး သီချင်းသံလေးနဲ့အတူ ဖတ်လို့ရတယ်နော်။ 🤍
+    ဝါကြိုက်တဲ့ သီချင်းလေးလည်း တိုးတိုးငြိမ့်ငြိမ့်လေး ပွင့်လာလိမ့်မယ်။ 🌷
+  </p>
+
       <a href="#memories" class="btn fade-in delay3">
         <span>အမှတ်တရလေးတွေ ကြည့်မယ် ♡</span>
       </a>
     </div>
   </section>
+
+  <!-- ===== SECTION 1.5 — COUNTDOWN ===== -->
+<section class="section countdown-section">
+  <div class="content">
+    <div class="section-header fade-in">
+      <div class="section-emoji">⏳</div>
+      <h2>ပြန်တွေ့ရမယ့်ရက်</h2>
+      <p class="section-sub">
+        ကျောင်းပြန်တက်ရင် ကိုယ်တို့ ပြန်တွေ့ကြမယ်နော် 🤍
+      </p>
+      <p class="section-sub">
+        ကျောင်းပြန်မတက်ခင်မှာလည်း အကြောင်းလေးတစ်ခုခုနဲ့ ပြန်တွေ့ဖြစ်မလားတော့ မသိဘူးနော်။ သေချာတာတစ်ခုကတော့ ကိုယ် ဝါနဲ့ တွေ့ချင်တယ်။ 🤍
+      </p>
+    </div>
+
+    <div class="countdown-box fade-in">
+      <div class="countdown-grid">
+        <div class="countdown-item">
+          <div class="countdown-value" id="days">--</div>
+          <div class="countdown-label">နေ့</div>
+        </div>
+        <div class="countdown-item">
+          <div class="countdown-value" id="hours">--</div>
+          <div class="countdown-label">နာရီ</div>
+        </div>
+        <div class="countdown-item">
+          <div class="countdown-value" id="minutes">--</div>
+          <div class="countdown-label">မိနစ်</div>
+        </div>
+        <div class="countdown-item">
+          <div class="countdown-value" id="seconds">--</div>
+          <div class="countdown-label">စက္ကန့်</div>
+        </div>
+      </div>
+
+      <div class="countdown-date">
+        ၂၅ နိုဝင်ဘာ ၂၀၂၆
+      </div>
+
+      <p class="countdown-message" id="countdownMessage">
+        တစ်နေ့ချင်း နီးလာနေပြီနော်… 🤍
+      </p>
+    </div>
+  </div>
+</section>
 
   <!-- ===== SECTION 2 — MEMORIES ===== -->
   <section class="section memories" id="memories">

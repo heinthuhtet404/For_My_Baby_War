@@ -178,3 +178,197 @@ if (heartForm) {
     }
   });
 }
+
+// ===== COUNTDOWN TIMER =====
+// Target date: 25 November 2026 (00:00)
+const targetDate = new Date('2026-11-25T00:00:00').getTime();
+
+const daysEl = document.getElementById('days');
+const hoursEl = document.getElementById('hours');
+const minutesEl = document.getElementById('minutes');
+const secondsEl = document.getElementById('seconds');
+const countdownMessage = document.getElementById('countdownMessage');
+const countdownSection = document.querySelector('.countdown-section');
+
+function pad(num) {
+  return num < 10 ? '0' + num : num.toString();
+}
+
+function updateCountdown() {
+  const now = new Date().getTime();
+  const distance = targetDate - now;
+
+  if (distance <= 0) {
+    // Countdown completed
+    if (daysEl) daysEl.textContent = '00';
+    if (hoursEl) hoursEl.textContent = '00';
+    if (minutesEl) minutesEl.textContent = '00';
+    if (secondsEl) secondsEl.textContent = '00';
+
+    if (countdownSection) {
+      countdownSection.classList.add('completed');
+    }
+    if (countdownMessage) {
+      countdownMessage.textContent = 'ဒီနေ့ပဲနော်… ကိုယ်တို့ ပြန်တွေ့ရပြီ 🤍';
+    }
+    return;
+  }
+
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  if (daysEl) daysEl.textContent = pad(days);
+  if (hoursEl) hoursEl.textContent = pad(hours);
+  if (minutesEl) minutesEl.textContent = pad(minutes);
+  if (secondsEl) secondsEl.textContent = pad(seconds);
+
+  // Dynamic message
+  if (countdownMessage) {
+    if (days > 100) {
+      countdownMessage.textContent = 'တစ်နေ့ချင်း နီးလာနေပြီနော်… 🤍';
+    } else if (days > 30) {
+      countdownMessage.textContent = 'မကြာတော့ဘူးနော်… 🌷';
+    } else if (days > 7) {
+      countdownMessage.textContent = 'တစ်လအတွင်းမှာ တွေ့ရတော့မယ်… 💕';
+    } else if (days > 1) {
+      countdownMessage.textContent = 'ရက်အနည်းငယ်ပဲ လိုတော့တယ်နော်… 💗';
+    } else if (days === 1) {
+      countdownMessage.textContent = 'မနက်ဖြန်ပဲနော်… 🥰';
+    } else {
+      countdownMessage.textContent = 'ဒီနေ့ပဲ… 🤍';
+    }
+  }
+}
+
+// Initial call
+updateCountdown();
+
+// Update every second
+setInterval(updateCountdown, 1000);
+
+// ===== BACKGROUND MUSIC =====
+const bgMusic = document.getElementById('bgMusic');
+const musicPlayer = document.getElementById('musicPlayer');
+const musicToggle = document.getElementById('musicToggle');
+const musicIcon = document.getElementById('musicIcon');
+const musicInfo = document.getElementById('musicInfo');
+const volumeSlider = document.getElementById('volumeSlider');
+
+if (bgMusic && musicToggle) {
+  // Set initial volume
+  bgMusic.volume = 0.5;
+
+  // Load saved state from localStorage
+  const savedVolume = localStorage.getItem('bgMusicVolume');
+  if (savedVolume !== null) {
+    const vol = parseFloat(savedVolume);
+    bgMusic.volume = vol;
+    volumeSlider.value = vol;
+  }
+
+  const savedPlaying = localStorage.getItem('bgMusicPlaying');
+  const savedTime = localStorage.getItem('bgMusicTime');
+
+  // Try to auto-resume from where left off
+  if (savedTime) {
+    bgMusic.currentTime = parseFloat(savedTime);
+  }
+
+  // Restore playing state (may be blocked by browser)
+  if (savedPlaying === 'true') {
+    const playAttempt = bgMusic.play();
+    if (playAttempt !== undefined) {
+      playAttempt.then(() => {
+        updatePlayingUI(true);
+      }).catch(() => {
+        // Autoplay blocked — user needs to tap
+        updatePlayingUI(false);
+      });
+    }
+  }
+
+  // Toggle play/pause
+  musicToggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+
+    // Expand the player
+    musicPlayer.classList.add('expanded');
+
+    if (bgMusic.paused) {
+      bgMusic.play().then(() => {
+        updatePlayingUI(true);
+      }).catch((err) => {
+        console.log('Play failed:', err);
+      });
+    } else {
+      bgMusic.pause();
+      updatePlayingUI(false);
+    }
+  });
+
+  // Collapse player on outside tap (after delay)
+  document.addEventListener('click', (e) => {
+    if (!musicPlayer.contains(e.target)) {
+      setTimeout(() => {
+        musicPlayer.classList.remove('expanded');
+      }, 3000);
+    }
+  });
+
+  // Volume control
+  if (volumeSlider) {
+    volumeSlider.addEventListener('input', (e) => {
+      e.stopPropagation();
+      const vol = parseFloat(e.target.value);
+      bgMusic.volume = vol;
+      localStorage.setItem('bgMusicVolume', vol);
+    });
+  }
+
+  // UI update
+  function updatePlayingUI(isPlaying) {
+    if (isPlaying) {
+      musicPlayer.classList.add('playing');
+      musicIcon.textContent = '🎵';
+      localStorage.setItem('bgMusicPlaying', 'true');
+    } else {
+      musicPlayer.classList.remove('playing');
+      musicIcon.textContent = '🔇';
+      localStorage.setItem('bgMusicPlaying', 'false');
+    }
+  }
+
+  // Save current time periodically
+  setInterval(() => {
+    if (!bgMusic.paused) {
+      localStorage.setItem('bgMusicTime', bgMusic.currentTime);
+    }
+  }, 2000);
+
+  // Save on page unload
+  window.addEventListener('beforeunload', () => {
+    localStorage.setItem('bgMusicTime', bgMusic.currentTime);
+    localStorage.setItem('bgMusicPlaying', !bgMusic.paused);
+  });
+
+  // First user interaction auto-start (if saved state was playing)
+  let firstInteractionDone = false;
+  const startOnFirstInteraction = () => {
+    if (firstInteractionDone) return;
+    firstInteractionDone = true;
+
+    if (savedPlaying === 'true' && bgMusic.paused) {
+      bgMusic.play().then(() => {
+        updatePlayingUI(true);
+      }).catch(() => {});
+    }
+
+    document.removeEventListener('touchstart', startOnFirstInteraction);
+    document.removeEventListener('click', startOnFirstInteraction);
+  };
+
+  document.addEventListener('touchstart', startOnFirstInteraction, { once: true, passive: true });
+  document.addEventListener('click', startOnFirstInteraction, { once: true });
+}

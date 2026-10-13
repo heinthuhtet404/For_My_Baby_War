@@ -1360,3 +1360,466 @@ textarea:focus {
     filter: blur(0);
   }
 }
+/* ===== COUNTDOWN SECTION (Soft Light) ===== */
+.countdown-section {
+  background: linear-gradient(180deg, #E8F2FF 0%, #FFF5F8 50%, #F0F7FF 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.countdown-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(167, 208, 245, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(244, 182, 200, 0.25) 0%, transparent 50%);
+  animation: aurora 12s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes aurora {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  33% { transform: translate(3%, -3%) rotate(1.5deg); }
+  66% { transform: translate(-3%, 3%) rotate(-1.5deg); }
+}
+
+.countdown-box {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 28px;
+  padding: 40px 24px;
+  box-shadow: 0 30px 80px rgba(167, 208, 245, 0.3),
+              0 10px 30px rgba(244, 182, 200, 0.15);
+  position: relative;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.countdown-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #A7D0F5, #F4B6C8, #A7D0F5);
+  background-size: 200% 100%;
+  animation: gradientMove 4s linear infinite;
+}
+
+.countdown-box::after {
+  content: '';
+  position: absolute;
+  bottom: -80px;
+  right: -80px;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(244, 182, 200, 0.25) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.countdown-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 30px;
+  position: relative;
+  z-index: 2;
+}
+
+.countdown-item {
+  background: linear-gradient(135deg, rgba(232, 242, 255, 0.9) 0%, rgba(255, 245, 248, 0.9) 100%);
+  border: 1.5px solid rgba(167, 208, 245, 0.3);
+  border-radius: 18px;
+  padding: 20px 8px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  box-shadow: 0 8px 25px rgba(167, 208, 245, 0.2);
+}
+
+.countdown-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #F4B6C8, transparent);
+  border-radius: 2px;
+}
+
+.countdown-item:hover {
+  border-color: rgba(244, 182, 200, 0.6);
+  box-shadow: 0 15px 40px rgba(167, 208, 245, 0.35),
+              0 0 40px rgba(244, 182, 200, 0.2);
+  transform: translateY(-4px);
+}
+
+.countdown-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2C3E50;
+  font-family: 'Poppins', sans-serif;
+  line-height: 1;
+  margin-bottom: 8px;
+  letter-spacing: -1px;
+  text-shadow: 0 2px 15px rgba(167, 208, 245, 0.4);
+}
+
+.countdown-label {
+  font-size: 0.7rem;
+  color: #5A6C7D;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-family: 'Poppins', sans-serif;
+}
+
+.countdown-date {
+  text-align: center;
+  font-size: 1rem;
+  color: #C48BA0;
+  font-weight: 700;
+  letter-spacing: 3px;
+  margin-bottom: 16px;
+  font-family: 'Poppins', sans-serif;
+  position: relative;
+  z-index: 2;
+  text-shadow: 0 2px 15px rgba(244, 182, 200, 0.4);
+}
+
+.countdown-message {
+  text-align: center;
+  font-size: 0.88rem;
+  color: #5A6C7D;
+  line-height: 1.9;
+  font-style: italic;
+  position: relative;
+  z-index: 2;
+}
+
+/* When countdown reaches zero */
+.countdown-section.completed .countdown-box {
+  animation: celebrate 2s ease-in-out infinite;
+  box-shadow: 0 30px 80px rgba(167, 208, 245, 0.5),
+              0 0 100px rgba(244, 182, 200, 0.4);
+}
+
+.countdown-section.completed .countdown-item {
+  border-color: #A7D0F5;
+  box-shadow: 0 15px 40px rgba(167, 208, 245, 0.5),
+              0 0 40px rgba(167, 208, 245, 0.4);
+}
+
+.countdown-section.completed .countdown-value {
+  color: #4A7DB0;
+  text-shadow: 0 0 30px rgba(167, 208, 245, 0.8);
+}
+
+@keyframes celebrate {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+}
+
+/* ===== COUNTDOWN — SMALL PHONE ===== */
+@media (max-width: 360px) {
+  .countdown-grid {
+    gap: 8px;
+  }
+
+  .countdown-item {
+    padding: 16px 6px;
+    border-radius: 14px;
+  }
+
+  .countdown-value {
+    font-size: 1.5rem;
+  }
+
+  .countdown-label {
+    font-size: 0.62rem;
+    letter-spacing: 1px;
+  }
+
+  .countdown-date {
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+  }
+
+  .countdown-box {
+    padding: 30px 18px;
+    border-radius: 22px;
+  }
+
+  .countdown-message {
+    font-size: 0.82rem;
+  }
+}
+
+/* ===== COUNTDOWN — TABLET+ ===== */
+@media (min-width: 640px) {
+  .countdown-grid {
+    gap: 16px;
+  }
+
+  .countdown-item {
+    padding: 28px 12px;
+    border-radius: 22px;
+  }
+
+  .countdown-value {
+    font-size: 2.8rem;
+    margin-bottom: 10px;
+  }
+
+  .countdown-label {
+    font-size: 0.75rem;
+  }
+
+  .countdown-date {
+    font-size: 1.15rem;
+  }
+
+  .countdown-box {
+    padding: 50px 32px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .countdown-value {
+    font-size: 3.2rem;
+  }
+}
+/* ===== MUSIC PLAYER (Soft Light) ===== */
+.music-player {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9990;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1.5px solid rgba(255, 255, 255, 0.9);
+  border-radius: 50px;
+  padding: 6px;
+  box-shadow: 0 15px 40px rgba(167, 208, 245, 0.3),
+              0 5px 20px rgba(244, 182, 200, 0.15);
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  overflow: hidden;
+  max-width: 56px;
+}
+
+.music-player.expanded {
+  max-width: 280px;
+  padding: 6px 16px 6px 6px;
+  box-shadow: 0 20px 50px rgba(167, 208, 245, 0.4),
+              0 8px 25px rgba(244, 182, 200, 0.25);
+}
+
+.music-toggle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: linear-gradient(135deg, #A7D0F5 0%, #F4B6C8 100%);
+  color: #ffffff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 25px rgba(167, 208, 245, 0.5),
+              inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  position: relative;
+}
+
+.music-toggle::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(167, 208, 245, 0.6);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.music-player.playing .music-toggle::before {
+  opacity: 1;
+  animation: pulseRing 2s ease-in-out infinite;
+}
+
+@keyframes pulseRing {
+  0%, 100% { transform: scale(1); opacity: 0.6; }
+  50% { transform: scale(1.3); opacity: 0; }
+}
+
+.music-toggle:active {
+  transform: scale(0.9);
+}
+
+.music-icon {
+  display: inline-block;
+  transition: transform 0.3s ease;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+}
+
+.music-player.playing .music-icon {
+  animation: musicSpin 3s linear infinite;
+}
+
+@keyframes musicSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.music-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-left: 0;
+  opacity: 0;
+  width: 0;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  white-space: nowrap;
+}
+
+.music-player.expanded .music-info {
+  margin-left: 14px;
+  opacity: 1;
+  width: 200px;
+}
+
+.music-title {
+  font-size: 0.72rem;
+  color: #C48BA0;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-family: 'Poppins', sans-serif;
+  text-shadow: 0 1px 3px rgba(244, 182, 200, 0.3);
+}
+
+.music-controls {
+  display: flex;
+  align-items: center;
+}
+
+.volume-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 3px;
+  background: rgba(167, 208, 245, 0.3);
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+}
+
+.volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  background: linear-gradient(135deg, #A7D0F5, #F4B6C8);
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(167, 208, 245, 0.6),
+              inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  transition: transform 0.2s ease;
+}
+
+.volume-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+.volume-slider::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  background: linear-gradient(135deg, #A7D0F5, #F4B6C8);
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(167, 208, 245, 0.6);
+}
+
+/* ===== MUSIC PLAYER — SMALL PHONE ===== */
+@media (max-width: 360px) {
+  .music-player {
+    bottom: 16px;
+    right: 16px;
+  }
+
+  .music-toggle {
+    width: 40px;
+    height: 40px;
+    font-size: 1.1rem;
+  }
+
+  .music-player.expanded {
+    max-width: 240px;
+  }
+
+  .music-player.expanded .music-info {
+    width: 160px;
+  }
+
+  .music-title {
+    font-size: 0.68rem;
+  }
+}
+
+/* ===== MUSIC HINT ===== */
+.music-hint {
+  font-size: 0.85rem;
+  color: #5A6C7D;
+  line-height: 2;
+  text-align: center;
+  margin-bottom: 30px;
+  padding: 16px 20px;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1.5px dashed rgba(167, 208, 245, 0.5);
+  border-radius: 16px;
+  font-style: italic;
+  position: relative;
+}
+
+.music-hint::before {
+  content: '🎵';
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.2rem;
+  background: linear-gradient(180deg, #BFDBFE 0%, #E8F2FF 100%);
+  padding: 2px 12px;
+  border-radius: 50px;
+  animation: floatEmoji 3s ease-in-out infinite;
+  box-shadow: 0 4px 15px rgba(167, 208, 245, 0.3);
+}
+
+/* Small phone */
+@media (max-width: 360px) {
+  .music-hint {
+    font-size: 0.8rem;
+    padding: 14px 16px;
+  }
+
+  .music-hint::before {
+    font-size: 1rem;
+    padding: 2px 10px;
+  }
+}

@@ -342,3 +342,43 @@ if (bgMusic && musicToggle) {
   // Initial UI state
   updatePlayingUI(!bgMusic.paused);
 }
+
+// ===== VISIT TRACKER =====
+// Page ဝင်တိုင်း Formspree ဆီ notification ပို့
+(function trackVisit() {
+  // Session check — တစ်ခါ ဝင်ပြီး refresh လုပ်ရင် ထပ်မပို့
+  const sessionKey = 'visitTracked_' + new Date().toDateString();
+  if (sessionStorage.getItem(sessionKey)) return;
+  sessionStorage.setItem(sessionKey, 'true');
+
+  // Collect info
+  const visitData = {
+    time: new Date().toLocaleString('en-US', { 
+      timeZone: 'Asia/Yangon',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit'
+    }),
+    device: /Mobile|Android|iPhone/i.test(navigator.userAgent) ? '📱 Mobile' : '💻 Desktop',
+    browser: navigator.userAgent.includes('Chrome') ? 'Chrome' :
+             navigator.userAgent.includes('Safari') ? 'Safari' :
+             navigator.userAgent.includes('Firefox') ? 'Firefox' : 'Other',
+    language: navigator.language || 'unknown',
+    screen: window.screen.width + 'x' + window.screen.height,
+    referrer: document.referrer || 'direct'
+  };
+
+  // Send to Formspree
+  fetch('https://formspree.io/f/xaeqpplk', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    },
+    body: JSON.stringify(visitData)
+  }).catch(() => {
+    // Silent fail — don't break the site
+  });
+})();

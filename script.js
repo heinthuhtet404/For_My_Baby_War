@@ -25,6 +25,25 @@ document.querySelectorAll('.fade-in, .photo-hero, .photo-small, .single-photo, .
 });
 
 
+// ===== CHAT BUBBLE REVEAL (Sequential) =====
+const chatObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const rows = entry.target.querySelectorAll('.chat-row');
+      rows.forEach((row, index) => {
+        setTimeout(() => {
+          row.classList.add('visible');
+        }, index * 300);
+      });
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.chat-container').forEach(container => {
+  chatObserver.observe(container);
+});
+
+
 // ===== SCROLL PROGRESS =====
 const progressBar = document.createElement('div');
 progressBar.className = 'progress-bar';

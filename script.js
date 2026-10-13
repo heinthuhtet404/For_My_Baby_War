@@ -247,55 +247,39 @@ updateCountdown();
 
 // Update every second
 setInterval(updateCountdown, 1000);
-
 // ===== BACKGROUND MUSIC =====
 const bgMusic = document.getElementById('bgMusic');
 const musicPlayer = document.getElementById('musicPlayer');
 const musicToggle = document.getElementById('musicToggle');
 const musicIcon = document.getElementById('musicIcon');
-const musicInfo = document.getElementById('musicInfo');
 const volumeSlider = document.getElementById('volumeSlider');
 
 if (bgMusic && musicToggle) {
-  // Set initial volume
+  // Initial volume
   bgMusic.volume = 0.5;
 
-  // Load saved state from localStorage
+  // Load saved volume only (not playing state, not time)
   const savedVolume = localStorage.getItem('bgMusicVolume');
   if (savedVolume !== null) {
-    const vol = parseFloat(savedVolume);
-    bgMusic.volume = vol;
-    volumeSlider.value = vol;
+    bgMusic.volume = parseFloat(savedVolume);
+    volumeSlider.value = savedVolume;
   }
 
-  const savedPlaying = localStorage.getItem('bgMusicPlaying');
-  const savedTime = localStorage.getItem('bgMusicTime');
-
-  // Try to auto-resume from where left off
-  if (savedTime) {
-    bgMusic.currentTime = parseFloat(savedTime);
-  }
-
-  // Restore playing state (may be blocked by browser)
-  if (savedPlaying === 'true') {
-    const playAttempt = bgMusic.play();
-    if (playAttempt !== undefined) {
-      playAttempt.then(() => {
-        updatePlayingUI(true);
-      }).catch(() => {
-        // Autoplay blocked — user needs to tap
-        updatePlayingUI(false);
-      });
-    }
-  }
-
-  // Toggle play/pause
+  // ===== MUSIC ICON CLICK =====
+  // - expand if collapsed
+  // - toggle play/pause
+  // - if collapsed and playing → just expand (keep playing)
   musicToggle.addEventListener('click', (e) => {
     e.stopPropagation();
 
-    // Expand the player
-    musicPlayer.classList.add('expanded');
+    const isExpanded = musicPlayer.classList.contains('expanded');
 
+    // Always expand on click
+    if (!isExpanded) {
+      musicPlayer.classList.add('expanded');
+    }
+
+    // Toggle play/pause
     if (bgMusic.paused) {
       bgMusic.play().then(() => {
         updatePlayingUI(true);
@@ -308,16 +292,20 @@ if (bgMusic && musicToggle) {
     }
   });
 
-  // Collapse player on outside tap (after delay)
+  // ===== TAP OUTSIDE = COLLAPSE ONLY (music keeps playing) =====
   document.addEventListener('click', (e) => {
     if (!musicPlayer.contains(e.target)) {
-      setTimeout(() => {
-        musicPlayer.classList.remove('expanded');
-      }, 3000);
+      musicPlayer.classList.remove('expanded');
     }
   });
 
-  // Volume control
+  document.addEventListener('touchstart', (e) => {
+    if (!musicPlayer.contains(e.target)) {
+      musicPlayer.classList.remove('expanded');
+    }
+  }, { passive: true });
+
+  // ===== VOLUME CONTROL =====
   if (volumeSlider) {
     volumeSlider.addEventListener('input', (e) => {
       e.stopPropagation();
@@ -325,50 +313,32 @@ if (bgMusic && musicToggle) {
       bgMusic.volume = vol;
       localStorage.setItem('bgMusicVolume', vol);
     });
+
+    // Prevent player from collapsing while dragging slider
+    volumeSlider.addEventListener('click', (e) => {
+      e.stopPropagation();
+    });
+
+    volumeSlider.addEventListener('touchstart', (e) => {
+      e.stopPropagation();
+    }, { passive: true });
   }
 
-  // UI update
+  // ===== UI UPDATE =====
   function updatePlayingUI(isPlaying) {
     if (isPlaying) {
       musicPlayer.classList.add('playing');
       musicIcon.textContent = '🎵';
-      localStorage.setItem('bgMusicPlaying', 'true');
     } else {
       musicPlayer.classList.remove('playing');
       musicIcon.textContent = '🔇';
-      localStorage.setItem('bgMusicPlaying', 'false');
     }
   }
 
-  // Save current time periodically
-  setInterval(() => {
-    if (!bgMusic.paused) {
-      localStorage.setItem('bgMusicTime', bgMusic.currentTime);
-    }
-  }, 2000);
+  // ===== LOOP =====
+  // audio tag မှာ 'loop' attribute ရှိပြီးသား — သီချင်းဆုံးရင် ပြန်စ
+  // Refresh လုပ်ရင် အစကနေ ပြန်စ — localStorage မသိမ်း
 
-  // Save on page unload
-  window.addEventListener('beforeunload', () => {
-    localStorage.setItem('bgMusicTime', bgMusic.currentTime);
-    localStorage.setItem('bgMusicPlaying', !bgMusic.paused);
-  });
-
-  // First user interaction auto-start (if saved state was playing)
-  let firstInteractionDone = false;
-  const startOnFirstInteraction = () => {
-    if (firstInteractionDone) return;
-    firstInteractionDone = true;
-
-    if (savedPlaying === 'true' && bgMusic.paused) {
-      bgMusic.play().then(() => {
-        updatePlayingUI(true);
-      }).catch(() => {});
-    }
-
-    document.removeEventListener('touchstart', startOnFirstInteraction);
-    document.removeEventListener('click', startOnFirstInteraction);
-  };
-
-  document.addEventListener('touchstart', startOnFirstInteraction, { once: true, passive: true });
-  document.addEventListener('click', startOnFirstInteraction, { once: true });
+  // Initial UI state
+  updatePlayingUI(!bgMusic.paused);
 }
